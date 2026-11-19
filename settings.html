@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Settings | MunchTrack</title>
+    <link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-layout">
+        <div id="sidebar-container"></div>
+        <main class="main-content">
+            <div id="header-container"></div>
+            <div class="page-content">
+                <h2 style="margin-bottom: 20px;">Account Settings</h2>
+                <div class="card" style="max-width: 500px;">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <i class="fa-solid fa-user-circle" style="font-size: 5rem; color: var(--primary);"></i>
+                        <h3 style="margin-top: 10px;">Admin User</h3>
+                        <p style="color: var(--text-muted);">admin@munchtrack.com</p>
+                    </div>
+
+                    <button class="btn btn-outline" style="width: 100%; margin-bottom: 10px;">Edit Profile</button>
+                    <button class="btn btn-outline" style="width: 100%; margin-bottom: 10px;">Change Password</button>
+                    <a href="index.html" class="btn btn-primary-sm" style="width: 100%; display: block; text-align: center; text-decoration: none;">Logout</a>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="/js/data.js"></script><script src="/js/layout.js"></script><script>loadLayout('settings');</script>
+</body>
+</html>

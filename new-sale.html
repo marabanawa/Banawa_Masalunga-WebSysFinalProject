@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>New Sale | MunchTrack</title>
+    <link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-layout">
+        <div id="sidebar-container"></div>
+        <main class="main-content">
+            <div id="header-container"></div>
+            <div class="page-content">
+                <h2 style="margin-bottom: 20px;">New Sale</h2>
+                <div class="pos-layout">
+                    <div>
+                        <div class="search-bar" style="width: 100%; margin-bottom: 20px;"><i class="fa-solid fa-search"></i><input type="text" id="pos-search" placeholder="Search products..." onkeyup="filterProducts()"></div>
+                        <div class="product-grid" id="pos-product-grid"></div>
+                    </div>
+
+                    <div class="cart-container">
+                        <div class="cart-header"><h3><i class="fa-solid fa-cart-shopping"></i> Cart</h3></div>
+                        <div class="cart-items" id="cart-items-container"><p style="text-align: center; color: var(--text-muted); margin-top: 20px;">Cart is empty</p></div>
+                        <div class="cart-footer">
+                            <div class="total-row"><span>Total:</span><span id="cart-total">₱0.00</span></div>
+                            <select id="payment-method" style="width: 100%; padding: 10px; margin-bottom: 10px;"><option value="Cash">Cash</option><option value="Card">Card</option><option value="GCash">GCash</option></select>
+                            <button class="btn btn-primary-sm" style="width: 100%; padding: 15px;" onclick="completeSale()">Complete Sale</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="/js/data.js"></script><script src="/js/layout.js"></script><script src="/js/new-sale.js"></script><script>loadLayout('sales');</script>
+</body>
+</html>
