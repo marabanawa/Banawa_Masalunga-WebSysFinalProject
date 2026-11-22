@@ -1,4 +1,5 @@
 let allProducts = [], cart = [];
+
 document.addEventListener('DOMContentLoaded', () => {
     allProducts = DB.getData().products;
     renderProducts(allProducts);
@@ -49,14 +50,12 @@ function updateCartUI() {
     container.innerHTML = cart.map(item => `
         <div class="cart-item">
             <div class="cart-item-info"><h4>${item.name}</h4><p>₱${item.price}</p></div>
-
             <div class="cart-item-controls">
                 <button class="qty-btn" onclick="changeQty(${item.id}, -1)">-</button>
                 <span>${item.qty}</span>
                 <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
             </div>
-
-            <div style="width: 60px; text-align: right; font-weight: bold;">₱${(item.price * item.qty).toLocaleString()}</div>
+            <div style="width: 70px; text-align: right; font-weight: bold;">₱${(item.price * item.qty).toLocaleString()}</div>
         </div>
     `).join('');
     const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
@@ -90,15 +89,13 @@ function showReceipt(sale) {
                 <h2 style="color: var(--primary); margin-bottom: 5px;"><i class="fa-solid fa-utensils"></i> MunchTrack</h2>
                 <p style="color: var(--text-muted); font-size: 0.8rem; margin-bottom: 15px;">Receipt No: ${sale.id} | ${sale.date}</p>
                 <hr style="border: 1px dashed var(--border); margin: 15px 0;">
-
                 <div style="text-align: left; font-size: 0.9rem; margin-bottom: 15px;">
                     <p><strong>Items:</strong> ${sale.items}</p>
                     <p><strong>Payment:</strong> ${sale.payment}</p>
                 </div>
-
                 <hr style="border: 1px dashed var(--border); margin: 15px 0;">
                 <h3 style="margin-bottom: 20px;">Total: ₱${sale.total.toLocaleString()}</h3>
-                <button class="btn btn-primary-sm" style="width: 100%;" onclick="document.getElementById('receipt-modal').remove()">Close</button>
+                <button class="btn-primary-sm" style="width: 100%;" onclick="document.getElementById('receipt-modal').remove()">Close</button>
             </div>
         </div>
     `;
