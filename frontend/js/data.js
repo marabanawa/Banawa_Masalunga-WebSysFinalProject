@@ -1,7 +1,14 @@
 function initData() {
     if (!localStorage.getItem('munchtrack_data')) {
         const defaultData = {
-            business: { name: "My Cafe", owner: "Admin" },
+            business: { 
+                name: "My Cafe", 
+                owner: "Admin",
+                email: "admin@munchtrack.com",
+                currency: "₱",
+                taxRate: 12,
+                lowStockAlerts: true
+            },
             products: [
                 { id: 1, name: "Iced Coffee", category: "Beverages", price: 75, stock: 80, minStock: 20 },
                 { id: 2, name: "Milk Tea", category: "Beverages", price: 80, stock: 65, minStock: 20 },
@@ -26,7 +33,6 @@ const DB = {
         data.products.push(product);
         DB.saveData(data);
     },
-
     getStats: () => {
         const data = DB.getData();
         const totalProducts = data.products.length;
@@ -36,7 +42,6 @@ const DB = {
         const topSelling = [...data.products].sort((a, b) => b.stock - a.stock).slice(0, 3);
         return { totalProducts, todaySales, lowStockCount, monthlyRevenue, topSelling, business: data.business };
     },
-
     processSale: (cartItems, paymentMethod) => {
         const data = DB.getData();
         const total = cartItems.reduce((sum, item) => sum + (item.price * item.qty), 0);
@@ -48,12 +53,10 @@ const DB = {
             payment: paymentMethod,
             status: "Completed"
         };
-
         cartItems.forEach(cartItem => {
             const product = data.products.find(p => p.id === cartItem.id);
             if (product) product.stock -= cartItem.qty;
         });
-
         data.sales.unshift(newSale);
         DB.saveData(data);
         return newSale;
